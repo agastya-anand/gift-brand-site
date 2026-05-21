@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const products = [
   {
@@ -31,6 +32,7 @@ const gallery = [
 ];
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main className="bg-[#F8F5F1] text-[#2A2A2A] relative scroll-smooth">
     <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-[#E8B8A6] opacity-20 rounded-full blur-3xl"></div>
@@ -48,14 +50,62 @@ export default function Home() {
   />
 </div>
 
-        <div className="hidden md:flex gap-10 text-[13px] uppercase tracking-[0.25em] text-neutral-700">
-          <a href="#">Home</a>
-          <a href="#">Collection</a>
-          <a href="#">Gallery</a>
-          <a href="#">Contact</a>
-        </div>
+        {/* DESKTOP MENU */}
+<div className="hidden md:flex gap-10 text-[13px] uppercase tracking-[0.25em] text-neutral-700">
+
+  <a href="#home" className="relative hover:text-[#C96C4A] transition after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-[#C96C4A] after:transition-all hover:after:w-full">
+    Home
+  </a>
+
+  <a href="#collection" className="relative hover:text-[#C96C4A] transition after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-[#C96C4A] after:transition-all hover:after:w-full">
+    Collection
+  </a>
+
+  <a href="#gallery" className="relative hover:text-[#C96C4A] transition after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-[#C96C4A] after:transition-all hover:after:w-full">
+    Gallery
+  </a>
+
+  <a href="#contact" className="relative hover:text-[#C96C4A] transition after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-[#C96C4A] after:transition-all hover:after:w-full">
+    Contact
+  </a>
+
+</div>
+
+{/* MOBILE MENU BUTTON */}
+<button
+  className="md:hidden flex flex-col gap-1"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+
+  <span className="w-6 h-[2px] bg-[#2A2A2A]"></span>
+  <span className="w-6 h-[2px] bg-[#2A2A2A]"></span>
+  <span className="w-6 h-[2px] bg-[#2A2A2A]"></span>
+
+</button>
 
       </nav>
+    {/* MOBILE DROPDOWN */}
+{menuOpen && (
+  <div className="md:hidden fixed top-[88px] left-0 w-full bg-white/95 backdrop-blur-xl border-b border-neutral-200 px-8 py-6 flex flex-col gap-6 uppercase tracking-[0.2em] text-sm z-40">
+
+    <a href="#home" onClick={() => setMenuOpen(false)}>
+      Home
+    </a>
+
+    <a href="#collection" onClick={() => setMenuOpen(false)}>
+      Collection
+    </a>
+
+    <a href="#gallery" onClick={() => setMenuOpen(false)}>
+      Gallery
+    </a>
+
+    <a href="#contact" onClick={() => setMenuOpen(false)}>
+      Contact
+    </a>
+
+  </div>
+)}
 
       {/* HERO SECTION */}
       <section id="home" className="grid md:grid-cols-2 gap-16 items-start px-8 md:px-16 pt-32 pb-20">
@@ -71,7 +121,7 @@ export default function Home() {
             Handmade With Love
           </p>
 
-          <h1 className="text-6xl md:text-[7rem] leading-none font-[family:var(--font-cormorant)]">
+          <h1 className="text-5xl md:text-[7rem] leading-none font-[family:var(--font-cormorant)]">
             Gifting,
             <br />
             But Make It
@@ -83,15 +133,15 @@ export default function Home() {
             and handcrafted gifting experiences designed to make every moment unforgettable.
           </p>
 
-          <div className="mt-10 flex flex-col md:flex-row gap-4">
+          <div className="group/buttons mt-10 flex flex-col md:flex-row gap-4">
 
-            <button className="bg-[#C96C4A] hover:bg-[#B85C38] text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
-              Explore Collection
-            </button>
+            <button className="bg-[#C96C4A] text-white px-8 py-4 rounded-full transition-all duration-300 border border-[#C96C4A] group-hover/buttons:bg-white group-hover/buttons:text-[#C96C4A] hover:!bg-[#C96C4A] hover:!text-white">
+  Explore Collection
+</button>
 
-            <button className="border border-[#C96C4A] text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
-              Customize Order
-            </button>
+            <button className="group border border-[#C96C4A] bg-white text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+  Customize Order
+</button>
 
           </div>
 
@@ -117,7 +167,14 @@ export default function Home() {
       </section>
 
       {/* FEATURED COLLECTIONS */}
-      <section id="collection" className="px-8 md:px-16 py-24">
+      <motion.section
+  id="collection"
+  className="px-8 md:px-16 py-24"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
 
@@ -159,7 +216,7 @@ export default function Home() {
 
         </div>
 
-      </section>
+      </motion.section>
 
       {/* VIDEO SECTION */}
       <section className="px-8 md:px-16 py-24 bg-[#F3ECE4]">
@@ -195,7 +252,14 @@ export default function Home() {
       </section>
 
       {/* GALLERY */}
-      <section id="gallery" className="px-8 md:px-16 py-24">
+      <motion.section
+  id="gallery"
+  className="px-8 md:px-16 py-24"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
 
         <div className="text-center mb-14">
 
@@ -229,10 +293,17 @@ export default function Home() {
 
         </div>
 
-      </section>
+      </motion.section>
 
       {/* CTA SECTION */}
-      <section id="contact" className="px-8 md:px-16 pb-24">
+      <motion.section
+  id="contact"
+  className="px-8 md:px-16 pb-24"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
 
         <div className="bg-[#C96C4A] rounded-[3rem] px-10 py-20 text-center text-white">
 
@@ -243,15 +314,74 @@ export default function Home() {
           <h2 className="text-5xl md:text-6xl font-[family:var(--font-cormorant)]">
             Customize Your Gift Experience
           </h2>
+         
+          <a
+  href="https://wa.me/919749333358"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block mt-10 bg-white text-[#C96C4A] px-8 py-4 rounded-full hover:opacity-90 transition-all duration-300 hover:scale-105"
+>
+  Contact on WhatsApp
+</a>
+<p className="mt-6 text-white/80 text-lg">
+  Follow our gifting world on Instagram @naaranngi.ndp
+</p>
+<a
 
-          <button className="mt-10 bg-white text-[#C96C4A] px-8 py-4 rounded-full hover:opacity-90 transition">
-            Contact on WhatsApp
-          </button>
+  href="https://instagram.com/naaranngi.ndp"
+
+  target="_blank"
+
+  rel="noopener noreferrer"
+
+  className="inline-flex items-center justify-center mt-6 bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white rounded-full w-14 h-14 shadow-lg hover:scale-110 transition-all duration-300"
+
+>
+
+  <svg
+
+    xmlns="http://www.w3.org/2000/svg"
+
+    width="22"
+
+    height="22"
+
+    viewBox="0 0 24 24"
+
+    fill="none"
+
+    stroke="currentColor"
+
+    strokeWidth="2"
+
+    strokeLinecap="round"
+
+    strokeLinejoin="round"
+
+  >
+
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+
+    <path d="M16 11.37a4 4 0 1 1-7.75 1.26 4 4 0 0 1 7.75-1.26z"></path>
+
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+
+  </svg>
+
+</a>
 
         </div>
 
-      </section>
-
+      </motion.section>
+ {/* FLOATING WHATSAPP BUTTON */}
+<a
+  href="https://wa.me/919749333358"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white px-5 py-3 rounded-full shadow-xl hover:scale-110 transition-all duration-300"
+>
+  WhatsApp
+</a>
     </main>
   );
 }
