@@ -139,9 +139,14 @@ export default function Home() {
   Explore Collection
 </button>
 
-            <button className="group border border-[#C96C4A] bg-white text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+            <a
+  href="https://wa.me/919749333358?text=Hi!%20I’d%20love%20to%20place%20a%20customized%20order%20for%20gift%20packaging."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group border border-[#C96C4A] bg-white text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 inline-block text-center"
+>
   Customize Order
-</button>
+</a>
 
           </div>
 
@@ -171,9 +176,9 @@ export default function Home() {
   id="collection"
   className="px-8 md:px-16 py-24"
   initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
+  animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
+  
 >
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
@@ -256,9 +261,9 @@ export default function Home() {
   id="gallery"
   className="px-8 md:px-16 py-24"
   initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
+  animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
+  
 >
 
         <div className="text-center mb-14">
@@ -300,9 +305,9 @@ export default function Home() {
   id="contact"
   className="px-8 md:px-16 pb-24"
   initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
+  animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
+  
 >
 
         <div className="bg-[#C96C4A] rounded-[3rem] px-10 py-20 text-center text-white">
