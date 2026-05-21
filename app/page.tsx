@@ -8,16 +8,16 @@ const products = [
     image: "/images/Bag1.JPG",
   },
   {
-    title: "Cute Packaging",
-    image: "/images/Bag2.JPG",
-  },
-  {
-    title: "Fun Gift Bags",
-    image: "/images/Bag3.JPG",
+    title: "Luxury Gift Notes",
+    image: "/images/card2.PNG",
   },
   {
     title: "Creative Wrapping",
     image: "/images/Wrap4.JPG",
+  },
+  {
+    title: "Premium Packaging",
+    image: "/images/Bag3.JPG",
   },
 ];
 
@@ -25,20 +25,19 @@ const gallery = [
   "/images/Bag4.JPG",
   "/images/Bag5.JPG",
   "/images/Bag6.JPG",
-  "/images/Bag7.JPG",
+  "/images/card.JPG",
   "/images/Wrap1.JPG",
   "/images/Wrap2.JPG",
 ];
 
 export default function Home() {
   return (
-    <main className="bg-[#F8F5F1] text-[#2A2A2A]  relative overflow-hidden">
+    <main className="bg-[#F8F5F1] text-[#2A2A2A] relative scroll-smooth">
     <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-[#E8B8A6] opacity-20 rounded-full blur-3xl"></div>
 
     <div className="absolute top-[200px] right-[-100px] w-[400px] h-[400px] bg-[#C96C4A] opacity-10 rounded-full blur-3xl"></div>
       {/* NAVBAR */}
-      <nav className="flex items-center justify-between px-8 md:px-16 pt-4 pb-5">
-
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/60 border-b border-white/20 shadow-sm flex items-center justify-between px-8 md:px-16 pt-4 pb-5 transition-all duration-300">
         <div className="h-[60px] flex items-center">
   <Image
     src="/images/logo Rust orange-01.png"
@@ -59,7 +58,7 @@ export default function Home() {
       </nav>
 
       {/* HERO SECTION */}
-      <section className="grid md:grid-cols-2 gap-16 items-start px-8 md:px-16 pt-0 pb-20">
+      <section id="home" className="grid md:grid-cols-2 gap-16 items-start px-8 md:px-16 pt-32 pb-20">
 
         {/* LEFT CONTENT */}
         <motion.div
@@ -86,11 +85,11 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col md:flex-row gap-4">
 
-            <button className="bg-[#C96C4A] hover:bg-[#B85C38] text-white px-8 py-4 rounded-full transition">
+            <button className="bg-[#C96C4A] hover:bg-[#B85C38] text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
               Explore Collection
             </button>
 
-            <button className="border border-[#C96C4A] text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition">
+            <button className="border border-[#C96C4A] text-[#C96C4A] hover:bg-[#C96C4A] hover:text-white px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
               Customize Order
             </button>
 
@@ -118,19 +117,19 @@ export default function Home() {
       </section>
 
       {/* FEATURED COLLECTIONS */}
-      <section className="px-8 md:px-16 py-24">
+      <section id="collection" className="px-8 md:px-16 py-24">
 
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
 
-          <h2 className="text-5xl font-[family:var(--font-cormorant)]">
-            Featured Collections
-          </h2>
+  <h2 className="text-4xl md:text-5xl font-[family:var(--font-cormorant)] leading-tight">
+    Featured Collections
+  </h2>
 
-          <p className="text-[#C96C4A]">
-            Crafted for every occasion
-          </p>
+  <p className="text-[#C96C4A] text-sm md:text-base tracking-wide">
+    Crafted for your special occasion
+  </p>
 
-        </div>
+</div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -146,7 +145,7 @@ export default function Home() {
                   src={product.image}
                   alt={product.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition duration-500"
+                  className="object-cover group-hover:scale-110 transition-all duration-700 ease-out"
                 />
 
               </div>
@@ -196,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* GALLERY */}
-      <section className="px-8 md:px-16 py-24">
+      <section id="gallery" className="px-8 md:px-16 py-24">
 
         <div className="text-center mb-14">
 
@@ -222,7 +221,7 @@ export default function Home() {
                 src={image}
                 alt="Gallery"
                 fill
-                className="object-cover hover:scale-105 transition duration-500"
+                className="object-cover hover:scale-110 transition-all duration-700 ease-out"
               />
 
             </div>
@@ -233,7 +232,7 @@ export default function Home() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="px-8 md:px-16 pb-24">
+      <section id="contact" className="px-8 md:px-16 pb-24">
 
         <div className="bg-[#C96C4A] rounded-[3rem] px-10 py-20 text-center text-white">
 
