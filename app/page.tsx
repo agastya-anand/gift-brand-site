@@ -317,7 +317,7 @@ export default function Home() {
           </p>
 
           <h2 className="text-5xl md:text-6xl font-[family:var(--font-cormorant)]">
-            Customize Your Gift Experience
+            Elevate Your Gift Experience
           </h2>
          
           <a
